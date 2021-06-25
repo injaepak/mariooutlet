@@ -7,9 +7,9 @@
 /**
  * 
  */
-class MARIOOUTLET_API GitTest
+class MARIOOUTLET_API MyClass
 {
 public:
-	GitTest();
-	~GitTest();
+	MyClass();
+	~MyClass();
 };

@@ -2,7 +2,8 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "mariooutlet.h"
+#include <Kismet/GameplayStatics.h>
 #include "Components/ActorComponent.h"
 #include "GameStateControler.generated.h"
 
@@ -25,6 +26,9 @@ public:
 	// Sets default values for this component's properties
 	UGameStateControler();
 
+	UFUNCTION(BlueprintNativeEvent, Category = "PrintLog")
+	void PrintEnumData(EGameState value);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -40,6 +44,16 @@ public:
 	void SetState(EGameState value);
 
 private:
+	//  GameModeBase 이 컴포넌트를 소유하고 있는 객체
+	//소유하고 있는 Actor 객체
+	UPROPERTY()
+	class ACPP_GameModeBase* gameModeBase;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GameState", meta = (AllowPrivateAccess = true))
 	EGameState mState = EGameState::Intro;
+
+	void IntroPage();
+	void ReadyPage();
+	void StartPage();
+	void GameoverPage();
 };

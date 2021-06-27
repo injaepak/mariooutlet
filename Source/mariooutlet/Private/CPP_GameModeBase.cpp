@@ -19,6 +19,18 @@ ACPP_GameModeBase::ACPP_GameModeBase()
 void ACPP_GameModeBase::InitGameState()
 {
 	Super::InitGameState();
+
+
+	// 게임 오버이후 재시작시
+	if (gameStateControler->GetState() == EGameState::GameOver)
+	{
+		/*if (widgetControler->gameoverUI)
+		{
+			widgetControler->CloseUI(EGameState::Intro);
+		}*/
+	}
+
+	gameStateControler->SetState(EGameState::Intro);
 }
 
 void ACPP_GameModeBase::BeginPlay()

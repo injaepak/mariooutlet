@@ -87,7 +87,7 @@ void UGameStateControler::IntroPage()
 }
 void UGameStateControler::ReadyPage()
 {
-
+	gameModeBase->widgetControler->UpdateUI(mState);
 }
 void UGameStateControler::StartPage()
 {

@@ -49,6 +49,18 @@ void UWidgetControler::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
+void UWidgetControler::UpdateUI(EGameState state)
+{
+	if (state == EGameState::Ready)
+	{
+		ingameUI->PrintLimitTime();
+		ingameUI->PrintLife(gameModeBase->life);
+		ingameUI->PrintCoin(gameModeBase->coin);
+		ingameUI->PrintPoint(gameModeBase->point);
+	}
+
+}
+
 void UWidgetControler::OpenUI(EGameState state)
 {
 	if (state == EGameState::Intro)

@@ -30,6 +30,8 @@ public:
 	void OpenUI(EGameState state);
 	void CloseUI(EGameState state);
 
+	void UpdateUI(EGameState state);
+
 	//TODO
 	//void IsOpened();
 

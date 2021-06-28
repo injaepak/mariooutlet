@@ -31,4 +31,27 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Component")
 	class UWidgetControler* widgetControler;
 
+	UPROPERTY(EditAnyWhere)
+	int life = 5;
+	int coin = 0;
+	int point = 0;
+
+	void AddPoint(int num)
+	{
+		point += num;
+	}
+	void AddCoin(int num)
+	{
+		coin += num;
+	}
+	void AddLife()
+	{
+		life++;
+	}
+	void MinusLife()
+	{
+		life--;
+	}
+
+
 };

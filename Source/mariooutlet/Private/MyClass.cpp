@@ -8,6 +8,7 @@
 
 MyClass::MyClass()
 {
+	//된거같아요오!!!!!!!!!
 }
 
 MyClass::~MyClass()

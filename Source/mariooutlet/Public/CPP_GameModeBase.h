@@ -35,6 +35,7 @@ public:
 	UPROPERTY(VisibleAnywhere, Category = "Component")
 	class UObjectPools* objectPool;
 
+
 	UPROPERTY(EditAnyWhere)
 	int life = 5;
 	int coin = 0;

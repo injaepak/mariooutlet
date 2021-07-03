@@ -14,6 +14,7 @@ ACPP_GameModeBase::ACPP_GameModeBase()
 	//ÄÄÆ÷³ÍÆ® ºÎÂø
 	gameStateControler = CreateDefaultSubobject<UGameStateControler>(TEXT("GameStateControler"));
 	widgetControler = CreateDefaultSubobject<UWidgetControler>(TEXT("WidgetControler"));
+	objectPool = CreateDefaultSubobject<UObjectPools>(TEXT("ObjectPool"));
 }
 
 void ACPP_GameModeBase::InitGameState()

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameStateControler.h"
 #include "WidgetControler.h"
+#include "ObjectPools.h"
 #include "GameFramework/GameModeBase.h"
 #include "CPP_GameModeBase.generated.h"
 
@@ -30,6 +31,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, Category = "Component")
 	class UWidgetControler* widgetControler;
+
+	UPROPERTY(VisibleAnywhere, Category = "Component")
+	class UObjectPools* objectPool;
 
 	UPROPERTY(EditAnyWhere)
 	int life = 5;

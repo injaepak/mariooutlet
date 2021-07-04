@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "EnemyA.generated.h"
 
+
 UCLASS()
 class MARIOOUTLET_API AEnemyA : public AActor
 {
@@ -18,6 +19,9 @@ public:
 		class UBoxComponent* boxComp;
 	UPROPERTY(VisibleAnywhere, Category = "Component")
 		class UStaticMeshComponent* meshComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Component")
+		class UBoxComponent* headBoxComp;
 
 	// EnemyAMove 라는 레고블럭을 추가해야 한다.
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Component")
@@ -36,5 +40,14 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	
+
+	UFUNCTION()
+		void OnCollisionEnter(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnHeadOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 
 };

@@ -1,19 +1,18 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "EnemyB.h"
-#include "mariooutlet.h"
+#include "IJ_LifeItem.h"
 #include <Components/BoxComponent.h>
 #include <Components/StaticMeshComponent.h>
-#include <EnemyBMove.h>
-#include "PlayerCPP.h"
+#include <EnemyAMove.h>
+#include "mariooutlet.h"
+
 // Sets default values
-AEnemyB::AEnemyB()
+AIJ_LifeItem::AIJ_LifeItem()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	// 1. Box Collider
 	boxComp = CreateDefaultSubobject<UBoxComponent>(TEXT("BoxCollider"));
 	RootComponent = boxComp;
 
@@ -25,31 +24,30 @@ AEnemyB::AEnemyB()
 	meshComp->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	// 3. 에너미 이동
-	enemyBMove = CreateDefaultSubobject<UEnemyBMove>(TEXT("EnemyBMove"));
+	enemyAMove = CreateDefaultSubobject<UEnemyAMove>(TEXT("EnemyAMove"));
 }
 
 // Called when the game starts or when spawned
-void AEnemyB::BeginPlay()
+void AIJ_LifeItem::BeginPlay()
 {
 	Super::BeginPlay();
-	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AEnemyB::OnCollisionEnter);
+	
+	boxComp->OnComponentBeginOverlap.AddDynamic(this, &AIJ_LifeItem::OnOverlapBegin);
 }
 
 // Called every frame
-void AEnemyB::Tick(float DeltaTime)
+void AIJ_LifeItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
-void AEnemyB::OnCollisionEnter(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AIJ_LifeItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	// 플레이어를 불러온다.
-	auto player = Cast<APlayerCPP>(OtherActor);
-	if (player)
-	{
-		PRINTLOG(TEXT("shittttttttttttttttttttttttttttttttttttt"))
-		//player->Destroy
-	}
+	// Life 를 1 올린다.
+	PRINTLOG(TEXT("Life ++"))
 }
+
+	
+
 
